@@ -1,5 +1,7 @@
 package exe.utm.structure;
 
+import java.util.List;
+
 public class Alumno {
     private Integer id;
     private String matricula;
@@ -7,6 +9,9 @@ public class Alumno {
     private String apellidos;
     private String foto;
     private String correo;
+    private Integer tutorId;
+    private String tutorName;
+    private List<Calificacion> califList;
 
     public Alumno() {
     }
@@ -59,4 +64,28 @@ public class Alumno {
         this.correo = correo;
     }
 
+    public Integer getTutorId() {
+        return tutorId;
+    }
+
+    public void setTutorId(Integer tutorId) {
+        this.tutorId = tutorId;
+    }
+
+    public String getTutorName() {
+        return tutorName;
+    }
+
+    public void setTutorName(String tutorName) {
+        this.tutorName = tutorName;
+    }
+
+    public List<Calificacion> getCalifList() {
+        return califList;
+    }
+
+    public void setCalifList(List<Calificacion> califList) {
+        this.califList = califList;
+    }
+    
 }

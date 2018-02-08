@@ -11,26 +11,24 @@
         <title>Update Alumno</title>
     </head>
     <body>
-        <h1>Actualizar información básica de Alumno</h1>
+        <h1>Actualizar información de Alumno</h1>
         <div class="container-fluid roundedborder2">
-            <form action = "/Tutorias/Alumno" method = "POST">
-                ID: <input class="form-control" type="text" name="id" value="${alumno.id}" readonly/>
+            <form action = "/Tutorias/Profesor" method = "POST">
+                ID: <input class="form-control" type="text" name="id" value="${profesor.id}" readonly/>
                 <br/>
-                Matricula: <input required class="form-control" type = "text" name = "matricula" value="${alumno.matricula}">
+                Nombre: <input required class="form-control" type = "text" name = "nombre" value="${profesor.nombre}"/>
                 <br />
-                Nombre: <input required class="form-control" type = "text" name = "nombre" value="${alumno.nombre}"/>
+                Usuario: <input required class="form-control" type = "text" name = "usuario" value="${profesor.usuario}" />
                 <br />
-                Apellidos: <input required class="form-control" type = "text" name = "apellidos" value="${alumno.apellidos}" />
+                Correo: <input required class="form-control" type = "text" name = "correo" value="${profesor.correo}" />
                 <br />
-                Foto: <input required class="form-control" type = "text" name = "foto" value="${alumno.foto}" />
-                <br />
-                Correo: <input required class="form-control" type = "text" name = "correo" value="${alumno.correo}"/>
+                Instituto: <input required class="form-control" type = "text" name = "instituto" value="${profesor.instituto}"/>
                 <br />
                 <input class="form-control btn btn-danger" type = "submit" value = "Actualizar" />
                 <input type="hidden" name="action" value="UPD"/>
             </form>
                 <br/>
-            <form action = "/Tutorias/Alumno" method = "POST">
+            <form action = "/Tutorias/Profesor" method = "POST">
                 <input class="form-control btn btn-danger" type = "submit" value = "Cancelar" />
                 <input type="hidden" name="action" value="QRY"/>
             </form>

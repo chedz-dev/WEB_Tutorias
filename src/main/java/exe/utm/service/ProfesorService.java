@@ -5,13 +5,13 @@
  */
 package exe.utm.service;
 
-import exe.utm.structure.Materia;
+import exe.utm.structure.Profesor;
 import java.util.List;
 
 public interface ProfesorService {
-    public List<Materia> getAll();
-    public Materia getMateria(Integer id);
-    public void insert (String nombre);
-    public void update (Integer id, String nombre);
+    public List<Profesor> getAll();
+    public Profesor getProfesor(Integer id);
+    public void insert (String nombre, String usuario, String correo, String instituto);
+    public void update (Integer id, String nombre, String usuario, String correo, String instituto);
     public void delete (Integer id);
 }

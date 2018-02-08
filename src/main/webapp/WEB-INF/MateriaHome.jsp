@@ -22,7 +22,7 @@
                   <ul class="nav navbar-nav">
                     <li><a href="/Tutorias/Alumno?action=QRY">Estudiantes</a></li>
                     <li class="active"><a href="/Tutorias/Materia?action=QRY">Materias</a></li>
-                    <li><a href="#">Profesores</a></li>
+                    <li><a href="/Tutorias/Profesor?action=QRY">Profesores</a></li>
                     <li><a href="#">Tutorias</a></li>
                   </ul>
                     <ul class="nav navbar-nav navbar-right">

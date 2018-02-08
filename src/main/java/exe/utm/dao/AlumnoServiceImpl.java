@@ -17,12 +17,15 @@ public class AlumnoServiceImpl implements AlumnoService {
     
     private static final String QUERY_ALL = "SELECT * FROM alumno";
     private static final String QUERY_ALUMNO = "SELECT * FROM alumno WHERE id = ?";
+    private static final String QUERY_TUTOR = "SELECT FROM alumno LEFT JOIN profesor ON alumno.tutor_id = profesor.id ";
     
     private static final String INSERT_ALUMNO = "INSERT INTO alumno (matricula,nombre,apellidos,foto,correo) VALUES (?,?,?,?,?)";
     
     private static final String UPDATE_ALUMNO = "UPDATE alumno SET matricula=?,nombre=?,apellidos=?,foto=?,correo=? WHERE id = ?";
     
     private static final String DELETE_ALUMNO = "DELETE FROM alumno WHERE id = ?";
+    
+    private static final String ADD_TUTOR = "";
     
     @Override
     public List<Alumno> getAll() {
@@ -47,6 +50,7 @@ public class AlumnoServiceImpl implements AlumnoService {
                 alumno.setApellidos(rs.getString("apellidos"));
                 alumno.setFoto(rs.getString("foto"));
                 alumno.setCorreo(rs.getString("correo"));
+                alumno.setTutorId(rs.getInt("tutor_id"));
                 resultList.add(alumno);
             }
             DBOperation.closePreparedStatement(ps);

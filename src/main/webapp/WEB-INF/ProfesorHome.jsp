@@ -19,9 +19,9 @@
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="/Tutorias/Alumno?action=QRY">Estudiantes</a></li>
+                    <li><a href="/Tutorias/Alumno?action=QRY">Estudiantes</a></li>
                     <li><a href="/Tutorias/Materia?action=QRY">Materias</a></li>
-                    <li><a href="/Tutorias/Profesor?action=QRY">Profesores</a></li>
+                    <li class="active"><a href="/Tutorias/Profesor?action=QRY">Profesores</a></li>
                     <li><a href="#">Tutorias</a></li>
                   </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -34,33 +34,31 @@
             <table class='table table-dark table-condensed'>
                 <thead>
                   <tr>
-                    <th>Matricula</th>
                     <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Foto</th>
+                    <th>Usuario</th>
                     <th>Correo</th>
+                    <th>Instituto</th>
                     <th colspan="3"></th>
                   </tr>
                 </thead>
 
                 <tbody>
-                <c:forEach items="${alumnos}" var="alumnos">
+                <c:forEach items="${profesores}" var="profesores">
                     <tr>
-                        <td><a href="/Tutorias/AlumnoDetail?action=QRY&id=<c:out value="${alumnos.id}"/>">${alumnos.matricula}</a></td>
-                        <td><c:out value="${alumnos.nombre}"/></td>
-                        <td><c:out value="${alumnos.apellidos}"/></td>
-                        <td><c:out value="${alumnos.foto}"/></td>
-                        <td><c:out value="${alumnos.correo}"/></td>
+                        <td><c:out value="${profesores.nombre}"/></td>
+                        <td><c:out value="${profesores.usuario}"/></td>
+                        <td><c:out value="${profesores.correo}"/></td>
+                        <td><c:out value="${profesores.instituto}"/></td>
                         <c:if test="${sessionScope.role=='admin'}">
-                        <td><a href="/Tutorias/Alumno?action=DEL&id=${alumnos.id}">Borrar</a></td>
-                        <td><a href="/Tutorias/Alumno?action=UPD_RED&id=${alumnos.id}">Editar</a></td>
+                        <td><a href="/Tutorias/Profesor?action=DEL&id=${profesores.id}">Borrar</a></td>
+                        <td><a href="/Tutorias/Profesor?action=UPD_RED&id=${profesores.id}">Editar</a></td>
                         </c:if>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
             <c:if test="${sessionScope.role=='admin'}">
-            <a href="/Tutorias/Alumno?action=INS_RED">Agregar alumno</a>
+            <a href="/Tutorias/Profesor?action=INS_RED">Agregar profesor</a>
             </c:if>
         </div>
     <script src="resources/bootstrap-3.3.7-dist/css/jquery.min.js"></script>    
