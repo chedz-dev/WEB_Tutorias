@@ -10,7 +10,6 @@ public class Alumno {
     private String foto;
     private String correo;
     private Integer tutorId;
-    private String tutorName;
     private List<Calificacion> califList;
 
     public Alumno() {
@@ -70,14 +69,6 @@ public class Alumno {
 
     public void setTutorId(Integer tutorId) {
         this.tutorId = tutorId;
-    }
-
-    public String getTutorName() {
-        return tutorName;
-    }
-
-    public void setTutorName(String tutorName) {
-        this.tutorName = tutorName;
     }
 
     public List<Calificacion> getCalifList() {

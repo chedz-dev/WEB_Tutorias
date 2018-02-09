@@ -17,15 +17,15 @@ public class AlumnoServiceImpl implements AlumnoService {
     
     private static final String QUERY_ALL = "SELECT * FROM alumno";
     private static final String QUERY_ALUMNO = "SELECT * FROM alumno WHERE id = ?";
-    private static final String QUERY_TUTOR = "SELECT FROM alumno LEFT JOIN profesor ON alumno.tutor_id = profesor.id ";
+    private static final String QUERY_TUTOR = "SELECT p.nombre FROM alumno as a, profesor as p WHERE a.tutor_id = p.id AND a.id = ?";
     
     private static final String INSERT_ALUMNO = "INSERT INTO alumno (matricula,nombre,apellidos,foto,correo) VALUES (?,?,?,?,?)";
     
     private static final String UPDATE_ALUMNO = "UPDATE alumno SET matricula=?,nombre=?,apellidos=?,foto=?,correo=? WHERE id = ?";
+    private static final String UPDATE_TUTOR = "UPDATE alumno SET tutor_id=? WHERE id = ?";
     
     private static final String DELETE_ALUMNO = "DELETE FROM alumno WHERE id = ?";
     
-    private static final String ADD_TUTOR = "";
     
     @Override
     public List<Alumno> getAll() {
@@ -169,5 +169,53 @@ public class AlumnoServiceImpl implements AlumnoService {
             DBOperation.closeConnection(conn, ps, rs);
         }
     }
-    
+
+    @Override
+    public void updateTutor(Integer alumnoId, Integer tutorId) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        LOGGER.info("AlumnoServiceImpl->updateTutor method invoke");
+        try {
+            conn = dbconn.connectToDB();
+            ps = conn.prepareStatement(UPDATE_TUTOR);
+            ps.setInt(1, tutorId);
+            ps.setInt(2, alumnoId);
+  
+            LOGGER.info("UPDATE_TUTOR update: " + ps.toString());
+            LOGGER.info("Executing update: " + ps.toString());
+            ps.executeUpdate();
+            conn.commit();
+        } catch (SQLException e) {
+            LOGGER.severe("AlumnoServiceImpl->updateTutor error: " + e.getLocalizedMessage());
+        } finally {
+            DBOperation.closeConnection(conn, ps, rs);
+        }
+    }
+
+    @Override
+    public String getTutor(Integer id) {
+       PreparedStatement ps = null;
+        ResultSet rs = null;
+        String tutor = "Tutor no asignado";
+        LOGGER.info("AlumnoServiceImpl->getTutor method invoke");
+        try {
+            conn = dbconn.connectToDB();
+            ps = conn.prepareStatement(QUERY_TUTOR);
+            ps.setInt(1, id);
+  
+            LOGGER.info("QUERY_TUTOR query: " + ps.toString());
+            LOGGER.info("Executing query: " + ps.toString());
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                tutor = rs.getString("nombre");
+            }
+        } catch (SQLException e) {
+            LOGGER.severe("AlumnoServiceImpl->getTutor error: " + e.getLocalizedMessage());
+        } finally {
+            DBOperation.closeConnection(conn, ps, rs);
+        }
+        return tutor;
+    }
+
 }

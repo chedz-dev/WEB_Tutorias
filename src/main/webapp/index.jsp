@@ -21,12 +21,8 @@
             <div class="alert-danger">${logerror}</div><br>
             <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" name="user" required autofocus>
             <input type="hidden" name="action" value="login"/>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Recordar cuenta
-                </label>
-            </div>
-         
+            <br/>
+            <br/>
             <button id="signin" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
         </form>
         <script>

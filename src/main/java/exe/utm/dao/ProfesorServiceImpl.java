@@ -45,7 +45,7 @@ public class ProfesorServiceImpl implements ProfesorService {
                 profesor.setNombre(rs.getString("nombre"));
                 profesor.setUsuario(rs.getString("usuario"));
                 profesor.setCorreo(rs.getString("correo"));
-                profesor.setInstituto(rs.getString("correo"));
+                profesor.setInstituto(rs.getString("instituto"));
                 resultList.add(profesor);
             }
             DBOperation.closePreparedStatement(ps);

@@ -11,6 +11,8 @@ import java.util.List;
 public interface AlumnoService {
     public List<Alumno> getAll();
     public Alumno getAlumno (Integer id);
+    public void updateTutor (Integer alumnoId, Integer tutorId);
+    public String getTutor (Integer id);
     public void insert (String matricula, String nombre, String apellidos, String foto, String correo);
     public void update (Integer id, String matricula, String nombre, String apellidos, String foto, String correo);
     public void delete (Integer id);

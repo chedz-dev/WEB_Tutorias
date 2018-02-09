@@ -1,7 +1,10 @@
 package exe.utm.controller;
 
 import exe.utm.dao.AlumnoServiceImpl;
+import exe.utm.dao.DBOperation;
+import exe.utm.dao.TutoriaServiceImpl;
 import exe.utm.service.AlumnoService;
+import exe.utm.service.TutoriaService;
 import exe.utm.structure.Alumno;
 import java.io.IOException;
 import java.util.List;
@@ -41,6 +44,16 @@ public class AlumnoServlet extends HttpServlet {
                 List<Alumno> alumnos = dbop.getAll();
                 request.setAttribute("alumnos", alumnos);
                 direccion = "/WEB-INF/AlumnoHome.jsp";
+                break;
+            case "PROF_QRY":
+                TutoriaService profop =  new TutoriaServiceImpl ();
+                DBOperation dboperation = new DBOperation ();
+                List<String> profesor = dboperation.getUser((String)session.getAttribute("name"));
+                Integer profId = Integer.parseInt(profesor.get(0));
+                request.setAttribute("profesor", profesor);
+                List<Alumno> alumnosList = profop.getTutoradosByProfesor(profId);
+                request.setAttribute("alumnos", alumnosList);
+                direccion = "/WEB-INF/TutoradoHome.jsp";
                 break;
             case "INS_RED":
                 direccion = "/WEB-INF/InsertAlumno.jsp";

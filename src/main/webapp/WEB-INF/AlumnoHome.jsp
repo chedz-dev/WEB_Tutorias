@@ -3,15 +3,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <head>
+    
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script src="resources/bootstrap-3.3.7-dist/css/ie-emulation-modes-warning.js"></script>
+        <script src="resources/bootstrap-3.3.7-dist/css/jquery.min.js"></script>
+        <script src="resources/DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="resources/DataTables/DataTables-1.10.16/js/dataTables.bootstrap.min.js"></script>
+        <script src="resources/DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="resources/DataTables/DataTables-1.10.16/js/dataTables.bootstrap.min.js"></script>
+        
         <link href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="resources/bootstrap-3.3.7-dist/css/signin.css" rel="stylesheet">
-        <link href="resources/stylesheet.css" rel="stylesheet">
-        <script src="resources/bootstrap-3.3.7-dist/css/ie-emulation-modes-warning.js"></script>
+        <link href="resources/DataTables/DataTables-1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
+        
+        <link href="resources/stylesheet.css" rel="stylesheet"> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
-    </head>
+    
     <body>
         <h1>Bienvenido ${sessionScope.name}!</h1><br>
         <div class="container">Rol: ${sessionScope.role}</div>
@@ -22,7 +31,7 @@
                     <li class="active"><a href="/Tutorias/Alumno?action=QRY">Estudiantes</a></li>
                     <li><a href="/Tutorias/Materia?action=QRY">Materias</a></li>
                     <li><a href="/Tutorias/Profesor?action=QRY">Profesores</a></li>
-                    <li><a href="#">Tutorias</a></li>
+                    <li><a href="#">Entrevistas</a></li>
                   </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/Tutorias/Login?action=logout"><span class="glyphicon glyphicon-log-in"></span> Cerrar sesión</a></li>
@@ -30,8 +39,8 @@
                 </div>  
             </nav>
         </div>
-        <div class="container roundedborder1 color1">
-            <table class='table table-dark table-condensed'>
+        <div class="container roundedborder1 color1" >
+            <table class='table table-dark table-condensed implementsWrapper' width="100%" cellspacing="0">
                 <thead>
                   <tr>
                     <th>Matricula</th>
@@ -39,7 +48,10 @@
                     <th>Apellidos</th>
                     <th>Foto</th>
                     <th>Correo</th>
-                    <th colspan="3"></th>
+                    <c:if test="${sessionScope.role=='admin'}">
+                    <th></th>
+                    <th></th>
+                    </c:if>
                   </tr>
                 </thead>
 
@@ -62,7 +74,7 @@
             <c:if test="${sessionScope.role=='admin'}">
             <a href="/Tutorias/Alumno?action=INS_RED">Agregar alumno</a>
             </c:if>
-        </div>
-    <script src="resources/bootstrap-3.3.7-dist/css/jquery.min.js"></script>    
+        </div> 
+    <script src="resources/script.js"></script>
     </body>
 </html>

@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "AlumnoDetailServlet", urlPatterns = {"/AlumnoDetail"})
-public class AlumnoDetailServlet extends HttpServlet {
+@WebServlet(name = "EntrevistaServlet", urlPatterns = {"/Entrevista"})
+public class EntrevistaServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,14 +50,17 @@ public class AlumnoDetailServlet extends HttpServlet {
                 request.setAttribute("tutor", dbop.getTutor(id));
                 direccion = "/WEB-INF/AlumnoDetail.jsp";
                 break;
-            case "UPD_TUTOR":
-                Integer idAlumno = Integer.parseInt(request.getParameter("id_alumno"));
-                Integer idTutor = Integer.parseInt(request.getParameter("id_tutor"));
-                dbop =  new AlumnoServiceImpl ();
-                dbop.updateTutor(idAlumno, idTutor);
-                direccion = "/AlumnoDetail?action=QRY&id="+idAlumno;
+            case "INS_RED":
+                dbop = new AlumnoServiceImpl();
+                Alumno alumno2 = dbop.getAlumno(Integer.parseInt(request.getParameter("id")));
+                String entrevistador = request.getParameter("entrevistador");
+                request.setAttribute("alumno", alumno2);
+                request.setAttribute("entrevistador", entrevistador);
+                direccion = "/WEB-INF/InsertEntrevista.jsp";
                 break;
-            
+            case "INS":
+                direccion = "/WEB-INF/Alumno?action=PROF_QUERY";
+                break;
             default:
                 direccion = "/index.jsp";
         }

@@ -19,21 +19,24 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         
-
+        String user = req.getParameter("user");
+        LOGGER.info("Intento de loggeo usuario : " + user);
         try {
             switch(req.getParameter("action")) {
                 case "login":
-                    String user = req.getParameter("user");
-                    LOGGER.info("Intento de loggeo usuario : " + user);
                     Authentication auth = new Authentication ();
                     String userRole = auth.authenticateUser(user);
                     if (!userRole.equals("")) {
+                        String direccion;
                         HttpSession session = req.getSession();
                         session.setAttribute("role", userRole);
                         session.setAttribute("name", user);
                         session.setAttribute("active", true);
-                        req.setAttribute("action", "QRY");
-                        RequestDispatcher dispatcher = req.getRequestDispatcher("/Alumno?action=QRY");
+                        if(userRole.equals("profesor"))
+                            direccion= "PROF_QRY";
+                        else
+                            direccion = "QRY";
+                        RequestDispatcher dispatcher = req.getRequestDispatcher("/Alumno?action="+direccion);
                         dispatcher.forward(req, resp);
                     } else {
                         req.setAttribute("logerror", "Credenciales incorrectas, vuelve a intentarlo");

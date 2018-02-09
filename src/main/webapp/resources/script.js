@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $('#tutor-dropdown').on('change', function() {
+        var alumno_id = document.getElementById("alumno_id").value;              
+        document.getElementById("updtutorhref").href = "/Tutorias/AlumnoDetail?action=UPD_TUTOR&id_alumno="+alumno_id+"&id_tutor="+this.value;
+    });
     $('#upload-form').submit(function (event) {
         event.preventDefault();
         var form = $('#upload-form')[0];
@@ -58,6 +62,36 @@ $(document).ready(function () {
             }
 
         });
+    });
+     $('.implementsWrapper').DataTable({
+        "language": {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        },
+        "scrollY": "500px",
+        "scrollX": true,
+        "scrollCollapse": true,
+        "paging": false
     });
     //Mecanismo para mostrar loader cuando se llama un servlet
     //a través de AJAX.".
