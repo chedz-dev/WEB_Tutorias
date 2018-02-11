@@ -59,7 +59,7 @@ public class EntrevistaServlet extends HttpServlet {
                 direccion = "/WEB-INF/InsertEntrevista.jsp";
                 break;
             case "INS":
-                direccion = "/WEB-INF/Alumno?action=PROF_QUERY";
+                direccion = "/Alumno?action=PROF_QRY";
                 break;
             default:
                 direccion = "/index.jsp";

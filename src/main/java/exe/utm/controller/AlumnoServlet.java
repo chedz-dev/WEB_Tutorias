@@ -60,7 +60,7 @@ public class AlumnoServlet extends HttpServlet {
                 break;
             case "INS":
                 dbop =  new AlumnoServiceImpl ();
-                dbop.insert(matricula, nombre, apellidos, foto, correo);
+                dbop.insert(matricula, nombre, apellidos, foto, correo,0);
                 direccion = "/Alumno?action=QRY";
                 break;
             case "UPD_RED":

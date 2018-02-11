@@ -15,5 +15,5 @@ public interface TutoriaService {
     public Entrevista getEntrevista (Integer id);
     public List<Entrevista> getEntrevistaByAlumno (Integer id);
     public List<Alumno> getTutoradosByProfesor (Integer profesorId);
-    public void insert (String nombre, String usuario, String correo, String instituto);
+    public void insert (Integer idAlumno, String matricula, String nombre, String entrevistador, String notas);
 }

@@ -18,7 +18,7 @@
                 <input type = "hidden" name = "id_alumno" value="${alumno.id}">
                 Matricula: <input required class="form-control" type = "text" name = "matricula" value="${alumno.matricula}">
                 <br />
-                Alumno: <input required class="form-control" type = "text" name = "nombre" value="${alumno.nombre}"/>
+                Alumno: <input required class="form-control" type = "text" name = "nombre" value="${alumno.nombre} ${alumno.apellidos}"/>
                 <br />
                 Entrevistador: <input required class="form-control" type = "text" name = "correo" value=${entrevistador}/>
                 <br />

@@ -19,7 +19,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     private static final String QUERY_ALUMNO = "SELECT * FROM alumno WHERE id = ?";
     private static final String QUERY_TUTOR = "SELECT p.nombre FROM alumno as a, profesor as p WHERE a.tutor_id = p.id AND a.id = ?";
     
-    private static final String INSERT_ALUMNO = "INSERT INTO alumno (matricula,nombre,apellidos,foto,correo) VALUES (?,?,?,?,?)";
+    private static final String INSERT_ALUMNO = "INSERT INTO alumno (matricula,nombre,apellidos,foto,correo,tutor_id) VALUES (?,?,?,?,?,?)";
     
     private static final String UPDATE_ALUMNO = "UPDATE alumno SET matricula=?,nombre=?,apellidos=?,foto=?,correo=? WHERE id = ?";
     private static final String UPDATE_TUTOR = "UPDATE alumno SET tutor_id=? WHERE id = ?";
@@ -96,7 +96,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public void insert(String matricula, String nombre, String apellidos, String foto, String correo) {
+    public void insert(String matricula, String nombre, String apellidos, String foto, String correo, Integer tutor_id) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
@@ -109,6 +109,7 @@ public class AlumnoServiceImpl implements AlumnoService {
             ps.setString(3, apellidos);
             ps.setString(4, matricula + nombre + ".jpg");
             ps.setString(5, correo);
+            ps.setInt(6, tutor_id);
   
             LOGGER.info("INSERT_ALUMNO insert: " + ps.toString());
             LOGGER.info("Executing insert: " + ps.toString());

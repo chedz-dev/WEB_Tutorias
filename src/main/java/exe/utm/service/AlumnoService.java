@@ -13,7 +13,7 @@ public interface AlumnoService {
     public Alumno getAlumno (Integer id);
     public void updateTutor (Integer alumnoId, Integer tutorId);
     public String getTutor (Integer id);
-    public void insert (String matricula, String nombre, String apellidos, String foto, String correo);
+    public void insert (String matricula, String nombre, String apellidos, String foto, String correo, Integer tutor_id);
     public void update (Integer id, String matricula, String nombre, String apellidos, String foto, String correo);
     public void delete (Integer id);
 }

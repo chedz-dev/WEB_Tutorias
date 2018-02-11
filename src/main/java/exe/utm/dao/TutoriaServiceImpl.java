@@ -71,15 +71,14 @@ public class TutoriaServiceImpl implements TutoriaService {
             }
             DBOperation.closePreparedStatement(ps);
         } catch (SQLException e) {
-            LOGGER.severe("TutoriaServiceImpl->getTutoradosByProfesor error: " + e.getLocalizedMessage());
+                    LOGGER.severe("TutoriaServiceImpl->getTutoradosByProfesor error: " + e.getLocalizedMessage());
         } finally {
             DBOperation.closeConnection(conn, ps, rs);
         }
         return resultList;
     }
-
     @Override
-    public void insert(String nombre, String usuario, String correo, String instituto) {
+    public void insert(Integer idAlumno, String matricula, String nombre, String entrevistador, String notas) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
